@@ -1,7 +1,6 @@
 # txla_model
 ## Code repository for the Texas-Lousisiana shelf hydrodynamic ROMS model.
 
-<>(Sample model analysis code may be found in 'exanples/open_output.ipynb')
 Relevant publications and description (ordered by time):
 > - Qu, L., Thomas, L. N., Wienkers, A. F., Hetland, R. D., Kobashi, D., Taylor, J. R., et al. (2022). Rapid vertical exchange at fronts in the northern Gulf of Mexico. Nature Communications, 13(1), 1–11. https://doi.org/10.1038/s41467-022-33251-7. Details two-way nested grid setup. 
 > - Kobashi, D., & Hetland, R. (2020). Reproducibility and variability of submesoscale frontal eddies on a broad, low-energy shelf of freshwater influence. Ocean Dynamics, 70(11), 1377–1395. Updated skill assessment of model salinity, native parent model. 
