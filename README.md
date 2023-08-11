@@ -25,7 +25,7 @@ If you work in Python, we recommend creating a custom conda environment so packa
 > > - Compute relative-divergence histograms to study diurnal convergence at fronts.
 
 ## Key publications and descriptions (ordered by time):
-Publications that contain major changes to model setup are listed here for a
+Publications that contain major changes to model setup are listed here:
 > - **Schlichting, D.**, Qu, L., Kobashi, D., & Hetland, R. (2023). Quantification of physical and numerical mixing in a coastal ocean model using salinity variance budgets. Journal of Advances in Modeling Earth Systems, 15, e2022MS003380. https://doi.org/10.1029/2022MS003380. *Detailed two-way nested model setup, analysis of on- and offline physical/numerical mixing.*
 > - Qu, L., Thomas, L. N., Wienkers, A. F., Hetland, R. D., Kobashi, D., Taylor, J. R., et al. (2022). Rapid vertical exchange at fronts in the northern Gulf of Mexico. *Nature Communications*, 13(1), 1–11. https://doi.org/10.1038/s41467-022-33251-7. *Detailed triple-nested setup with Croco.*
 > - Kobashi, D., & Hetland, R. (2020). Reproducibility and variability of submesoscale frontal eddies on a broad, low-energy shelf of freshwater influence. *Ocean Dynamics*, 70(11), 1377–1395. Updated skill assessment of model salinity for native parent model. https://doi.org/10.1007/s10236-020-01401-4. *Native parent model. Concluded model is capable of statistically reproducing the eddy characteristics.*
