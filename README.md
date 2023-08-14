@@ -34,9 +34,10 @@ Publications that contain major changes to model setup are listed here:
 ## Model documentation
 The most comprehensive description of the (nested) model setup is currently found in *Schlichting et al. (2023)*. Here, key points of the model setup are documented for reference:
 > - Standard output frequency: 1 hour
-> - 670 x 189 x 30 grid points for native parent
-> - ```Vtransform=2,Vstretching=4```, ```$\theta_s = 5.0$, $\theta_b = 0.4$```
-> - Online timestep is about 75-80, nesting is 5X finer. At least for 2010, 2021, and 2022 simulations.
+> - 670 x 189 x 30 grid points for native parent 677 602
+> > - 677 X 602 X 30 for 2010 nested simulation, 402 X 377 X 30 for the 2021 nested simulation, and 452 X 552 X 30 for the 2022 nested simulation. Note indices may be off by one or two grid points. 
+> - ```Vtransform=2,Vstretching=4```, ```\theta_s = 5.0$, \theta_b = 0.4$```
+> - Online timestep is about 75-80 s, nesting is 5X finer due to the CFL criteria. At least for 2010, 2021, and 2022 simulations.
 > - Vertical mixing (turbulence closure) schemes: $\kappa-\omega$ for 2010 simulations. $\kappa-\epsilon$ for 2021 ver 1.0 and 2022.
 > - Lateral mixing schemes: Laplacian diffusivity and viscosity that are scaled to the grid size. Mixing along geopotential surfaces, i.e., completely horizontal in our model.
 > > - For 2010 nested simulations, these values are scaled incorrectly! They should be rescaled to account for the smaller area in the child model, but are left the same as the parent values. See *Schlichting et al. (2023)* Section 3 and the response to reviewers for more information.
