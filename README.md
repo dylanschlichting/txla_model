@@ -17,8 +17,8 @@ Example files will be provided or linked to run the model (if file size is an is
 > - A condensed ```xroms``` tutorial:
 > > - Open model output from a url path (e.g., Hafen for the TXLA model) with ```xroms```.
 > > - Make plan and section view of model variables with ```cartopy```.
-> > - Interpolating model variables (future work)
-> > - Calculating derivatives and integrals of model variables (future work)
+> > - Calculating derivatives and integrals of model variables.
+> > > - Interpolating model variables.
 > - Commonly calculated variables, properties, or processes
 > > - Rotate $u$ and $v$ velocities from their native grid to east-west and north-south components.
 > > - Calculate quantities from the velocity gradient tensor (relative vorticity, divergence, strain; future work)
