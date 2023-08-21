@@ -1,10 +1,10 @@
 # txla_model
 ```txla_model``` is a metarepository for the Texas-Louisiana shelf hydrodynamic ROMS model configured as part of COAWST (Warner et al., 2010 *O.M.*). The information required to run the model can be found here. The bulk of the input generation and output postprocessing/analysis is done in Python. Output analysis is based on modern packages such as ```xroms```, which is built on ```xarray``` and ```xgcm```. It contains a panolpy of useful tools for working with ROMS output. Runs conducted for SUNRISE by Daijiro Kobashi during 2021 - Aug. 2023 are configured with COAWST ver. 3.7.  This includes the 2010, 2021, and 2022 simulations disucssed in this repository, although future runs will be on ver 3.8.
 ## First steps: Create a conda environment
-If you work in Python, we recommend creating a custom conda environment so package version control can be managed easily. To run the notebooks in this repository, an environment can be installed by running 
+If you work in Python, we recommend creating a custom conda environment so package version control can be managed easily. To run the notebooks in this repository, an environment can be installed by running
 
         conda install --file txla_model_req.txt
-    
+
 ## Running the model (work in progress):
 Example files will be provided or linked to run the model (if file size is an issue) as listed below. One example is given for the native parent and one for the nested iteration. Slurm job scripts for running on an HPRC cluster are also provided.
 > - grid generation (future work)
@@ -24,6 +24,7 @@ Example files will be provided or linked to run the model (if file size is an is
 > > - Calculate quantities from the velocity gradient tensor (relative vorticity, divergence, strain; future work)
 > > - Calculate total kinetic energy dissipation $\epsilon$ from Generic Length Scale turbulence closure schemes following Warner et al. (2005).
 > > - Calculate the two-dimensional frontogenesis function of some property $q$ following Hetland and Qu (in prep).
+> > > - Code to compute histograms of the 2D normalized frontogenesis function may be found under ```/output_scripts/```
 > - More sophisticated analyses
 > > - Compute on- and offline volume-integrated temperature budgets using average (offline) and diagnostic (online) files.
 > > - Compute volume-integrated salinity variance budgets (future work; see https://github.com/dylanschlichting/numerical_mixing for more information.)
@@ -38,12 +39,12 @@ Publications that contain major changes to model setup are listed here:
 The most comprehensive description of the (nested) model setup is currently found in *Schlichting et al. (2023)*. A draft of an in-depth description authored by Daijiro Kobashi of the nested model setup is attached in ROMS_nested_app.pdf. Key points of the model setup are documented for reference:
 > - Standard output frequency: 1 hour
 > - 670 x 189 x 30 grid points for native (non-nested) parent
-> > - 677 X 602 X 30 for 2010 nested simulation, 402 X 377 X 30 for the 2021 nested simulation, and 452 X 552 X 30 for the 2022 nested simulation. Note indices may be off by one or two grid points. 
+> > - 677 X 602 X 30 for 2010 nested simulation, 402 X 377 X 30 for the 2021 nested simulation, and 452 X 552 X 30 for the 2022 nested simulation. Note indices may be off by one or two grid points.
 > - ```Vtransform=2,Vstretching=4```, ```\theta_s = 5.0, \theta_b = 0.4```
 > - Online timestep ```dt= 75-80 s```, nesting is 5X finer due to the CFL criteria. At least for 2010, 2021, and 2022 simulations.
 > - MPDATA for momentum and tracer advection
 > - ERA interim reanalysis for 2010 atmospheric forcing, ERA5 reanalysis for 2021/2022 simulations.
-> - River forcing: USGS streamflow data for 2010 simulations, national water model for future runs (work in progress, add to docs). 
+> - River forcing: USGS streamflow data for 2010 simulations, national water model for future runs (work in progress, add to docs).
 > - Vertical mixing (turbulence closure) schemes: $\kappa-\omega$ for 2010 simulations. $\kappa-\epsilon$ for 2021 ver 1.0 and 2022.
 > - Lateral mixing schemes: Laplacian diffusivity and viscosity that are scaled to the grid size. Mixing along geopotential surfaces, i.e., completely horizontal in our model.
 > > - For 2010 nested simulations, these values are scaled incorrectly! They should be rescaled to account for the smaller area in the child model, but are left the same as the parent values. See *Schlichting et al. (2023)* Section 3 and the response to reviewers for more information.
