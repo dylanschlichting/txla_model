@@ -18,16 +18,25 @@ Example files will be provided or linked to run the model (if file size is an is
 > > - Open model output from a url path (e.g., Hafen for the TXLA model) with ```xroms```.
 > > - Make plan and section view of model variables with ```cartopy```.
 > > - Calculating derivatives and integrals of model variables.
-> > > - Interpolating model variables.
-> - Commonly calculated variables, properties, or processes
+> > > - Surface derivatives can be calculated with a ```grid.derivative()```
+> > > - Depth dependent derivatives should be calculated with a Jacobian to account for the time-dependent sea surface height oscillations. Use ```xroms.hgrad()``` for this.
+> > - Interpolating model variables.
+> - An extensive ```xhistogram``` tutorial with various applications (future work):
+> > - Salinity coordinates, total exchange flow (MacCready, 2011 *J.P.O.*), and mixing. TEF is a transported weighted histogram of salinity.
+> > - Two-dimensional weighted histograms
+> > - How to construct PDFs and CDFs offline discreetly from a histogram
+> - Commonly calculated variables, properties, or processes:
 > > - Rotate $u$ and $v$ velocities from their native grid to east-west and north-south components.
-> > - Calculate quantities from the velocity gradient tensor (relative vorticity, divergence, strain; future work)
+> > - Calculate normalized quantities from the velocity gradient tensor:
+> > > - Relative vorticity $`\zeta/f = (\partial_x v - \partial_y u)/f`$.
+> > > - Divergence $`(\partial_x u + \partial_y v)/f`$.
+> > > - Total strain rate $`\sqrt{(\partial_x u - \partial_y v)^2+(\partial_x v + \partial_y u)^2}/f`$.
 > > - Calculate total kinetic energy dissipation $\epsilon$ from Generic Length Scale turbulence closure schemes following Warner et al. (2005).
 > > - Calculate the two-dimensional frontogenesis function of some property $q$ following Hetland and Qu (in prep).
 > > > - Code to compute histograms of the 2D normalized frontogenesis function may be found under ```/output_scripts/```
 > - More sophisticated analyses
 > > - Compute on- and offline volume-integrated temperature budgets using average (offline) and diagnostic (online) files.
-> > - Compute volume-integrated salinity variance budgets (future work; see https://github.com/dylanschlichting/numerical_mixing for more information.)
+> > - Compute volume-integrated salinity variance budgets (arhived in a separate repository; https://github.com/dylanschlichting/numerical_mixing.)
 > > - Compute relative-divergence histograms to study diurnal convergence at fronts.
 ## Key publications and descriptions (ordered by time):
 Publications that contain major changes to model setup are listed here:
@@ -42,9 +51,10 @@ The most comprehensive description of the (nested) model setup is currently foun
 > > - 677 X 602 X 30 for 2010 nested simulation, 402 X 377 X 30 for the 2021 nested simulation, and 452 X 552 X 30 for the 2022 nested simulation. Note indices may be off by one or two grid points.
 > - ```Vtransform=2,Vstretching=4```, ```\theta_s = 5.0, \theta_b = 0.4```
 > - Online timestep ```dt= 75-80 s```, nesting is 5X finer due to the CFL criteria. At least for 2010, 2021, and 2022 simulations.
-> - MPDATA for momentum and tracer advection
+> - ```MPDATA``` for momentum and tracer advection
 > - ERA interim reanalysis for 2010 atmospheric forcing, ERA5 reanalysis for 2021/2022 simulations.
 > - River forcing: USGS streamflow data for 2010 simulations, national water model for future runs (work in progress, add to docs).
 > - Vertical mixing (turbulence closure) schemes: $\kappa-\omega$ for 2010 simulations. $\kappa-\epsilon$ for 2021 ver 1.0 and 2022.
-> - Lateral mixing schemes: Laplacian diffusivity and viscosity that are scaled to the grid size. Mixing along geopotential surfaces, i.e., completely horizontal in our model.
+> > - This can be confirmed with variables ```m```, ```n```, and ```p```. See Warner et al. (2005) *O.M.*.
+> - Lateral mixing schemes: Laplacian constant diffusivity (1.0 m$`^2`$ s$`^{-1}`$) and viscosity (5.0 m$`^2`$ s$`^{-1}`$) that are scaled to the grid size. Mixing along geopotential surfaces, i.e., completely horizontal in our model.
 > > - For 2010 nested simulations, these values are scaled incorrectly! They should be rescaled to account for the smaller area in the child model, but are left the same as the parent values. See *Schlichting et al. (2023)* Section 3 and the response to reviewers for more information.
